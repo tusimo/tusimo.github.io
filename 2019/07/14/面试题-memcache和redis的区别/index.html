@@ -3,20 +3,20 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>go-micro 在调试的时候服务不自动拆除的问题 | 一约既定,万山无阻</title>
+  <title>面试题|memcache和redis的区别 | 一约既定,万山无阻</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题分析go-micro 微服务正常运行的时候,可以自动注册和解除注册,但是再使用goland进行debug的时候注册上的服务会因为终止不能正确的解除注册.导致该服务会一直存在,并会被后续的请求负载到不能正确的响应. 解决办法设置两个参数:RegisterInterval 表示多长时间进行重新注册,RegisterTTL表示注册过期时间,当服务崩溃了,到了过期时间会被自动拆除掉,一般设置 Regi">
-<meta name="keywords" content="golang,go-micro,micro">
+  <meta name="description" content="综述都是数据缓存服务，都支持key-value缓存数据，减少数据库查询次数。 服务方式服务提供方式都支持TCP连接传输，都支持UDP连接传输。如果用户进程和服务进程在同一台机器还支持unix域套接字通信。 不同点事件模型redis基于epoll,memcache 基于libevent,libevent也是基于epoll的，所以两者都是epoll这种先进的事件模型。redis是单线程的服务器。并不是">
+<meta name="keywords" content="面试题,redis ,memcache">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go-micro 在调试的时候服务不自动拆除的问题">
-<meta property="og:url" content="https://tusimo.github.io/2019/06/26/go-micro-在调试的时候服务不自动拆除的问题/index.html">
+<meta property="og:title" content="面试题|memcache和redis的区别">
+<meta property="og:url" content="https://tusimo.github.io/2019/07/14/面试题-memcache和redis的区别/index.html">
 <meta property="og:site_name" content="一约既定,万山无阻">
-<meta property="og:description" content="问题分析go-micro 微服务正常运行的时候,可以自动注册和解除注册,但是再使用goland进行debug的时候注册上的服务会因为终止不能正确的解除注册.导致该服务会一直存在,并会被后续的请求负载到不能正确的响应. 解决办法设置两个参数:RegisterInterval 表示多长时间进行重新注册,RegisterTTL表示注册过期时间,当服务崩溃了,到了过期时间会被自动拆除掉,一般设置 Regi">
+<meta property="og:description" content="综述都是数据缓存服务，都支持key-value缓存数据，减少数据库查询次数。 服务方式服务提供方式都支持TCP连接传输，都支持UDP连接传输。如果用户进程和服务进程在同一台机器还支持unix域套接字通信。 不同点事件模型redis基于epoll,memcache 基于libevent,libevent也是基于epoll的，所以两者都是epoll这种先进的事件模型。redis是单线程的服务器。并不是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-26T07:37:40.000Z">
+<meta property="og:updated_time" content="2019-07-14T09:03:17.591Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go-micro 在调试的时候服务不自动拆除的问题">
-<meta name="twitter:description" content="问题分析go-micro 微服务正常运行的时候,可以自动注册和解除注册,但是再使用goland进行debug的时候注册上的服务会因为终止不能正确的解除注册.导致该服务会一直存在,并会被后续的请求负载到不能正确的响应. 解决办法设置两个参数:RegisterInterval 表示多长时间进行重新注册,RegisterTTL表示注册过期时间,当服务崩溃了,到了过期时间会被自动拆除掉,一般设置 Regi">
+<meta name="twitter:title" content="面试题|memcache和redis的区别">
+<meta name="twitter:description" content="综述都是数据缓存服务，都支持key-value缓存数据，减少数据库查询次数。 服务方式服务提供方式都支持TCP连接传输，都支持UDP连接传输。如果用户进程和服务进程在同一台机器还支持unix域套接字通信。 不同点事件模型redis基于epoll,memcache 基于libevent,libevent也是基于epoll的，所以两者都是epoll这种先进的事件模型。redis是单线程的服务器。并不是">
   
     <link rel="alternative" href="/atom.xml" title="一约既定,万山无阻" type="application/atom+xml">
   
@@ -197,11 +197,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-go-micro-在调试的时候服务不自动拆除的问题" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-面试题-memcache和redis的区别" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/06/26/go-micro-在调试的时候服务不自动拆除的问题/" class="article-date">
-      <time datetime="2019-06-26T07:20:00.000Z" itemprop="datePublished">2019-06-26</time>
+      <a href="/2019/07/14/面试题-memcache和redis的区别/" class="article-date">
+      <time datetime="2019-07-14T08:11:00.000Z" itemprop="datePublished">2019-07-14</time>
 </a>
     </div>
   
@@ -214,7 +214,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      go-micro 在调试的时候服务不自动拆除的问题
+      面试题|memcache和redis的区别
     </h1>
   
 
@@ -223,13 +223,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/golang/">golang</a>
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go-micro/">go-micro</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/micro/">micro</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/memcache/">memcache</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis </a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -239,9 +239,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>go-micro 微服务正常运行的时候,可以自动注册和解除注册,但是再使用goland进行debug的时候注册上的服务会因为终止不能正确的解除注册.导致该服务会一直存在,并会被后续的请求负载到不能正确的响应.</p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>设置两个参数:<code>RegisterInterval</code> 表示多长时间进行重新注册,<code>RegisterTTL</code>表示注册过期时间,当服务崩溃了,到了过期时间会被自动拆除掉,一般设置 <code>RegisterInterval</code>要比 <code>RegisterTTL</code> 稍微短一些.</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">service := micro.NewService(</span><br><span class="line">		micro.Name(config.App.Name),</span><br><span class="line">		micro.Version(config.App.Version),</span><br><span class="line">		micro.Metadata(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">			<span class="string">"type"</span>: <span class="string">"tools"</span>,</span><br><span class="line">		&#125;),</span><br><span class="line">		<span class="comment">//close when server stop</span></span><br><span class="line">		micro.AfterStop(<span class="function"><span class="keyword">func</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">			<span class="comment">//srv.Close()</span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		&#125;),</span><br><span class="line">		micro.RegisterInterval(time.Second*<span class="number">20</span>),</span><br><span class="line">		micro.RegisterTTL(time.Second*<span class="number">30</span>),</span><br><span class="line">	)</span><br><span class="line">	service.Init()</span><br></pre></td></tr></table></figure>
+        <h1 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h1><p>都是数据缓存服务，都支持key-value缓存数据，减少数据库查询次数。</p>
+<h1 id="服务方式"><a href="#服务方式" class="headerlink" title="服务方式"></a>服务方式</h1><p>服务提供方式都支持TCP连接传输，都支持UDP连接传输。如果用户进程和服务进程在同一台机器还支持unix域套接字通信。</p>
+<h1 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h1><h2 id="事件模型"><a href="#事件模型" class="headerlink" title="事件模型"></a>事件模型</h2><p><code>redis</code>基于<code>epoll</code>,<code>memcache</code> 基于<code>libevent</code>,<code>libevent</code>也是基于<code>epoll</code>的，所以两者都是<code>epoll</code>这种先进的事件模型。<br><code>redis</code>是单线程的服务器。并不是<code>redis</code>只有一个主线程，而是只有一个主线程进行event loop,其他线程会处理其他的工作，比如：数据存储。</p>
+<p>而<code>memcache</code>是多线程的，使用的是master-worker的方式，至县城监听端口，建立连接，然后顺序分配给每个工作线程。每个工作线程都有一个event loop.各个线程之间采用管道通信。</p>
+<h2 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h2><p><code>memcahce</code> 是采用内存池进行分配，会预先分配一个大内存块，可以减少内存分配次数，提高效率。<br><code>redis</code> 没有内存池，是即用即分配，需要的时候直接向操作系统申请。</p>
+<h2 id="数据库的实现"><a href="#数据库的实现" class="headerlink" title="数据库的实现"></a>数据库的实现</h2><p><code>memcache</code> 只支持 key-value的数据存储。<br><code>redis</code> 支持  <code>string</code> <code>list</code> <code>set</code> <code>sorted set</code> <code>hashtable</code>5种数据结构。<br><code>redis</code> 支持多个数据库0-15。<br><code>redis</code> 支持数据持久化。</p>
+<h2 id="过期策略"><a href="#过期策略" class="headerlink" title="过期策略"></a>过期策略</h2><p><code>memcache</code> 不是定期检查数据过期状态，而是在客户端进程使用的时候进行检查，这样可以减少额外的cpu进行过期检查，缺点是当有的数据长时间未被使用，将占据内存。<br><code>redis</code> 不是将过期时间存储在数据结构中，而是单独使用一个dict来保存过期时间，并且也是采用<code>memcache</code>的惰性删除方式。但是<code>redis</code>有定时删除用于补救内存占用，存在一长一短的两种方式，短期是随机选取部分过期数据删除，长期的会执行一次长时间的删除。</p>
+<h2 id="redis持久化"><a href="#redis持久化" class="headerlink" title="redis持久化"></a>redis持久化</h2><h3 id="RDB持久化"><a href="#RDB持久化" class="headerlink" title="RDB持久化"></a>RDB持久化</h3><p><code>save</code>和<code>bgsave</code>命令执行时，会将数据库保存到文件里。保存的时候会将过期数据剔除掉。<br><code>bgsave</code> 会fork出一个子进程，让子进程进行数据保存工作，写入temp文件。当子进程完成数据保存后会给父进程发送信号，父进程将temp文件修改为真正的rdb文件。但是这个其中有一个问题，在子进程保存的过程中如果有数据修改，会导致持久化的数据和当前数据库的数据不一致。</p>
+<h3 id="AOF持久化"><a href="#AOF持久化" class="headerlink" title="AOF持久化"></a>AOF持久化</h3><p>该方式不是存储的数据库本身，而是存储的命令，类似于 mysql的redo log.存储每次执行的命令，将命令依次重放就是最终的结果了。</p>
+<p>每次执行命令的时候都会存入<code>aof_buf</code>，在event loop循环时将<code>aof_buf</code> 存入aof文件。</p>
+<p>同时提供 <code>aof_rewrite</code>将现有的数据库生成对应的命令，然后把命令存入aof文件。</p>
+<p>aof也支持后台模式，那么也会遇到rdb的问题，父进程数据更新了怎么办？这个时候aof并不和子进程通信，而是将持久化期间的命令追加到aof文件即可。</p>
+<h3 id="redis事务"><a href="#redis事务" class="headerlink" title="redis事务"></a>redis事务</h3><p>redis事务是指可以同时执行多个命令，使用<code>multi</code>命令开启。但是并不会在执行错误时进行回滚。支持<code>watch</code>观察变量是否被改变了。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://cloud.tencent.com/developer/article/1004377" target="_blank" rel="noopener">Memcached 与 Redis 实现的对比</a></p>
+
       
       
         <div class="page-reward">
@@ -296,13 +308,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/26/go-micro-在调试的时候服务不自动拆除的问题/">go-micro 在调试的时候服务不自动拆除的问题</a></p>
+        <p><span>本文标题:</span><a href="/2019/07/14/面试题-memcache和redis的区别/">面试题|memcache和redis的区别</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 tusimo 的个人博客">tusimo</a></p>
-        <p><span>发布时间:</span>2019年06月26日 - 15时20分</p>
-        <p><span>最后更新:</span>2019年06月26日 - 15时37分</p>
+        <p><span>发布时间:</span>2019年07月14日 - 16时11分</p>
+        <p><span>最后更新:</span>2019年07月14日 - 17时03分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/26/go-micro-在调试的时候服务不自动拆除的问题/" title="go-micro 在调试的时候服务不自动拆除的问题">https://tusimo.github.io/2019/06/26/go-micro-在调试的时候服务不自动拆除的问题/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://tusimo.github.io/2019/06/26/go-micro-在调试的时候服务不自动拆除的问题/　　作者: tusimo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/07/14/面试题-memcache和redis的区别/" title="面试题|memcache和redis的区别">https://tusimo.github.io/2019/07/14/面试题-memcache和redis的区别/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://tusimo.github.io/2019/07/14/面试题-memcache和redis的区别/　　作者: tusimo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -315,15 +327,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/07/06/面试题-乐观锁和悲观锁/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          面试题|乐观锁和悲观锁
-        
-      </div>
-    </a>
   
+    <a href="/2019/07/07/面试题-数据库事务介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">面试题|mysql数据库事务介绍</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -332,7 +340,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题分析"><span class="toc-number">1.</span> <span class="toc-text">问题分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决办法"><span class="toc-number">2.</span> <span class="toc-text">解决办法</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#综述"><span class="toc-number">1.</span> <span class="toc-text">综述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务方式"><span class="toc-number">2.</span> <span class="toc-text">服务方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不同点"><span class="toc-number">3.</span> <span class="toc-text">不同点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事件模型"><span class="toc-number">3.1.</span> <span class="toc-text">事件模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存分配"><span class="toc-number">3.2.</span> <span class="toc-text">内存分配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库的实现"><span class="toc-number">3.3.</span> <span class="toc-text">数据库的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过期策略"><span class="toc-number">3.4.</span> <span class="toc-text">过期策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis持久化"><span class="toc-number">3.5.</span> <span class="toc-text">redis持久化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RDB持久化"><span class="toc-number">3.5.1.</span> <span class="toc-text">RDB持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOF持久化"><span class="toc-number">3.5.2.</span> <span class="toc-text">AOF持久化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis事务"><span class="toc-number">3.5.3.</span> <span class="toc-text">redis事务</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -386,13 +394,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/07/06/面试题-乐观锁和悲观锁/" title="上一篇: 面试题|乐观锁和悲观锁">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/07/07/面试题-数据库事务介绍/" title="下一篇: 面试题|mysql数据库事务介绍">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/07/14/面试题-memcache和redis的区别/">面试题|memcache和redis的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/07/面试题-数据库事务介绍/">面试题|mysql数据库事务介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/06/面试题-乐观锁和悲观锁/">面试题|乐观锁和悲观锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/26/go-micro-在调试的时候服务不自动拆除的问题/">go-micro 在调试的时候服务不自动拆除的问题</a></li></ul>
