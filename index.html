@@ -132,7 +132,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/go-micro/" style="font-size: 10px;">go-micro</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/memcache/" style="font-size: 10px;">memcache</a> <a href="/tags/micro/" style="font-size: 10px;">micro</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/redis/" style="font-size: 10px;">redis </a> <a href="/tags/乐观锁/" style="font-size: 10px;">乐观锁</a> <a href="/tags/事务/" style="font-size: 10px;">事务</a> <a href="/tags/悲观锁/" style="font-size: 10px;">悲观锁</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
+                        <a href="/tags/go-micro/" style="font-size: 10px;">go-micro</a> <a href="/tags/golang/" style="font-size: 15px;">golang</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/memcache/" style="font-size: 10px;">memcache</a> <a href="/tags/micro/" style="font-size: 10px;">micro</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/redis/" style="font-size: 10px;">redis </a> <a href="/tags/乐观锁/" style="font-size: 10px;">乐观锁</a> <a href="/tags/事务/" style="font-size: 10px;">事务</a> <a href="/tags/快速排序/" style="font-size: 10px;">快速排序</a> <a href="/tags/悲观锁/" style="font-size: 10px;">悲观锁</a> <a href="/tags/消息系统/" style="font-size: 10px;">消息系统</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/面试题/" style="font-size: 20px;">面试题</a>
                     </div>
                 </section>
                 
@@ -197,6 +197,231 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-openvpn" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/04/25/openvpn/" class="article-date">
+      <time datetime="2020-04-25T02:51:00.000Z" itemprop="datePublished">2020-04-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/25/openvpn/">openvpn</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="openvpn使用"><a href="#openvpn使用" class="headerlink" title="openvpn使用"></a>openvpn使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install openvpn</span><br></pre></td></tr></table></figure>
+
+<p>建议使用 <code>https://github.com/angristan/openvpn-install.git</code><br>这个是个安装脚本，可以用于后期方便的创建用户。</p>
+<p>安装完创建一个用户。</p>
+<p><code>./openvpn-install.sh</code></p>
+<p>输入一个用户名字，一路向下回车。会生成一个你输入的名字的<code>test.ovpn</code>文件。这个文件交给使用者就可以连接上vpn了。</p>
+<p>客户端连接：</p>
+<p><code>sudo openvpn --config test.ovpn</code></p>
+<h2 id="配置服务端"><a href="#配置服务端" class="headerlink" title="配置服务端"></a>配置服务端</h2><p>服务端配置文件在 <code>/etc/openvpn/server.conf</code></p>
+<p>目录大概是这个样子的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── ca.crt</span><br><span class="line">├── ca.key</span><br><span class="line">├── ccd</span><br><span class="line">├── client</span><br><span class="line">├── client-template.txt</span><br><span class="line">├── crl.pem</span><br><span class="line">├── easy-rsa</span><br><span class="line">│   ├── ChangeLog</span><br><span class="line">│   ├── COPYING.md</span><br><span class="line">│   ├── doc</span><br><span class="line">│   │   ├── EasyRSA-Advanced.md</span><br><span class="line">│   │   ├── EasyRSA-Readme.md</span><br><span class="line">│   │   ├── EasyRSA-Upgrade-Notes.md</span><br><span class="line">│   │   ├── Hacking.md</span><br><span class="line">│   │   └── Intro-To-PKI.md</span><br><span class="line">│   ├── easyrsa</span><br><span class="line">│   ├── gpl-2.0.txt</span><br><span class="line">│   ├── mktemp.txt</span><br><span class="line">│   ├── openssl-easyrsa.cnf</span><br><span class="line">│   ├── pki</span><br><span class="line">│   │   ├── ca.crt</span><br><span class="line">│   │   ├── certs_by_serial</span><br><span class="line">│   │   ├── crl.pem</span><br><span class="line">│   │   ├── ecparams</span><br><span class="line">│   │   │   └── prime256v1.pem</span><br><span class="line">│   │   ├── extensions.temp</span><br><span class="line">│   │   ├── index.txt</span><br><span class="line">│   │   ├── index.txt.attr</span><br><span class="line">│   │   ├── index.txt.attr.old</span><br><span class="line">│   │   ├── index.txt.old</span><br><span class="line">│   │   ├── issued</span><br><span class="line">│   │   ├── openssl-easyrsa.cnf</span><br><span class="line">│   │   ├── private</span><br><span class="line">│   │   │   ├── ca.key</span><br><span class="line">│   │   ├── renewed</span><br><span class="line">│   │   │   ├── certs_by_serial</span><br><span class="line">│   │   │   ├── private_by_serial</span><br><span class="line">│   │   │   └── reqs_by_serial</span><br><span class="line">│   │   ├── reqs</span><br><span class="line">│   │   ├── revoked</span><br><span class="line">│   │   │   ├── certs_by_serial</span><br><span class="line">│   │   │   │   └── 1C782206A7C9D64230CCB89306D3498D.crt</span><br><span class="line">│   │   │   ├── private_by_serial</span><br><span class="line">│   │   │   │   └── 1C782206A7C9D64230CCB89306D3498D.key</span><br><span class="line">│   │   │   └── reqs_by_serial</span><br><span class="line">│   │   │       └── 1C782206A7C9D64230CCB89306D3498D.req</span><br><span class="line">│   │   ├── safessl-easyrsa.cnf</span><br><span class="line">│   │   ├── serial</span><br><span class="line">│   │   └── serial.old</span><br><span class="line">│   ├── README.md</span><br><span class="line">│   ├── README.quickstart.md</span><br><span class="line">│   ├── vars</span><br><span class="line">│   ├── vars.example</span><br><span class="line">│   └── x509-types</span><br><span class="line">│       ├── ca</span><br><span class="line">│       ├── client</span><br><span class="line">│       ├── code-signing</span><br><span class="line">│       ├── COMMON</span><br><span class="line">│       ├── server</span><br><span class="line">│       └── serverClient</span><br><span class="line">├── ipp.txt</span><br><span class="line">├── server</span><br><span class="line">├── server.conf</span><br><span class="line">├── server_EfV7ZshROa2FUFdB.crt</span><br><span class="line">├── server_EfV7ZshROa2FUFdB.key</span><br><span class="line">└── tls-crypt.key</span><br></pre></td></tr></table></figure>
+
+<p>重点介绍几个实际中用到的</p>
+<p>先看一下服务器的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">port 1194  #这个是监听的端口</span><br><span class="line">proto udp  #这个是使用UDP协议</span><br><span class="line">dev tun    #这个定义网卡的名称</span><br><span class="line">user nobody </span><br><span class="line">group nobody</span><br><span class="line">persist-key #这个会记忆客户端的连接</span><br><span class="line">persist-tun</span><br><span class="line">keepalive 10 120</span><br><span class="line">topology subnet</span><br><span class="line">server 10.8.1.0 255.255.255.0 #这个地址分配网段 可以改成自己想要的 10.8.3 255.255.255.0</span><br><span class="line">ifconfig-pool-persist ipp.txt #这个会保存客户端连接上来使用的IP,用于下次连接还使用相同的IP</span><br><span class="line">push &quot;route 10.99.0.0 255.255.0.0 vpn_gateway&quot; #这个是推送路由，这个下面会介绍。主要用于网络分流</span><br><span class="line">push &quot;dhcp-option DNS 10.8.1.1&quot; # 这个推送DNS ,这里推送了一个自己的DNS地址</span><br><span class="line">push &quot;dhcp-option DNS 223.5.5.5&quot;</span><br><span class="line">;push &quot;redirect-gateway def1 bypass-dhcp&quot; #这个开启是所有流量都经过VPN</span><br><span class="line">dh none</span><br><span class="line">ecdh-curve prime256v1</span><br><span class="line">tls-crypt tls-crypt.key 0</span><br><span class="line">crl-verify crl.pem</span><br><span class="line">ca ca.crt</span><br><span class="line">cert server_EfV7ZshROa2FUFdB.crt</span><br><span class="line">key server_EfV7ZshROa2FUFdB.key</span><br><span class="line">auth SHA256</span><br><span class="line">cipher AES-128-GCM</span><br><span class="line">ncp-ciphers AES-128-GCM</span><br><span class="line">tls-server</span><br><span class="line">tls-version-min 1.2</span><br><span class="line">tls-cipher TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256</span><br><span class="line">status /var/log/openvpn/status.log</span><br><span class="line">verb 3</span><br><span class="line">client-config-dir /etc/openvpn/ccd #这里开启客户端的一些设置，可用于固定IP</span><br><span class="line">duplicate-cn #这个开启允许客户端使用相同配置文件进行重复连接</span><br></pre></td></tr></table></figure>
+
+<p>介绍下几个常用的服务端配置</p>
+<p>推送路由：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">push &quot;route 10.99.0.0 255.255.0.0 vpn_gateway&quot; #假如10.99.0.0/16 是公司的内部网络地址，这样配置只有这些网段才会走VPN地址。</span><br><span class="line">;push &quot;redirect-gateway def1 bypass-dhcp&quot; #记得这个配置不要打开。这个打开了所有的流量都会默认走VPN</span><br></pre></td></tr></table></figure>
+
+<p>如果配置公司内部VPN,正常是出于安全考虑，或者连接公司的私有网络。<br>那么我们可以把流量进行分流，只允许公司内部的地址才访问VPN，其他的网络走本地。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#看一下连上VPN后的路由表</span><br><span class="line"></span><br><span class="line">route -n</span><br><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags Metric Ref    Use Iface</span><br><span class="line">0.0.0.0         192.168.0.1     0.0.0.0         UG    600    0        0 wlp3s0</span><br><span class="line">10.8.1.0        0.0.0.0         255.255.255.0   U     0      0        0 tun0</span><br><span class="line">10.99.0.0       10.8.1.1        255.255.0.0     UG    0      0        0 tun0</span><br><span class="line"></span><br><span class="line">可以发现，我们配置的网段的Gateway是10.8.1.1 这个就是我们VPN服务器的地址。而默认路由都是走的本地网关。</span><br></pre></td></tr></table></figure>
+
+<p>再看一个服务器的配置。</p>
+<p><code>/etc/openvpn/ccd</code></p>
+<p>我们在里面放置一些和创建用户时相同用户名的文件<code>test</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ifconfig-push 10.8.1.100 255.255.255.0</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以固定客户端的IP地址了。</p>
+<p>记得配置好重启vpn服务器。</p>
+<p><code>service openvpn restart</code></p>
+<p>##客户端配置</p>
+<p>那么我们再来看一下客户端的配置文件。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">cat test.ovpn</span><br><span class="line"></span><br><span class="line">client</span><br><span class="line">proto udp</span><br><span class="line">remote 202.202.202.202 1194 #这个就是VPN服务器的地址啦</span><br><span class="line">dev tun</span><br><span class="line">resolv-retry infinite</span><br><span class="line">#route-nopull 这个选项开启后客户端就不会接受服务器推送的路由了，优先级比服务器的配置高。即使服务端开启了推送路由。</span><br><span class="line">nobind</span><br><span class="line">persist-key</span><br><span class="line">persist-tun</span><br><span class="line">remote-cert-tls server</span><br><span class="line">verify-x509-name server_EfV7ZshROa2FUFdB name</span><br><span class="line">auth SHA256</span><br><span class="line">auth-nocache</span><br><span class="line">cipher AES-128-GCM</span><br><span class="line">tls-client</span><br><span class="line">tls-version-min 1.2</span><br><span class="line">tls-cipher TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256</span><br><span class="line">setenv opt block-outside-dns # Prevent Windows 10 DNS leak</span><br><span class="line">verb 3</span><br><span class="line">&lt;ca&gt;</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">###省略</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">&lt;/ca&gt;</span><br><span class="line">&lt;cert&gt;</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">###省略</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">&lt;/cert&gt;</span><br><span class="line">&lt;key&gt;</span><br><span class="line">-----BEGIN PRIVATE KEY-----</span><br><span class="line">###省略</span><br><span class="line">-----END PRIVATE KEY-----</span><br><span class="line">&lt;/key&gt;</span><br><span class="line">&lt;tls-crypt&gt;</span><br><span class="line">#</span><br><span class="line"># 2048 bit OpenVPN static key</span><br><span class="line">#</span><br><span class="line">-----BEGIN OpenVPN Static key V1-----</span><br><span class="line">###省略</span><br><span class="line">-----END OpenVPN Static key V1-----</span><br><span class="line">&lt;/tls-crypt&gt;</span><br><span class="line"></span><br><span class="line">#这3行用于连接VPN的时候，自动执行DNS写入操作。update-resolve-conf脚本没有的话需要安装。不然推送的DNS会不生效。</span><br><span class="line">script-security 2</span><br><span class="line">up /etc/openvpn/update-resolv-conf</span><br><span class="line">down /etc/openvpn/update-resolv-conf</span><br></pre></td></tr></table></figure>
+
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/openvpn/">openvpn</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-kafka系统介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/18/kafka系统介绍/" class="article-date">
+      <time datetime="2019-07-18T12:35:00.000Z" itemprop="datePublished">2019-07-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/18/kafka系统介绍/">kafka系统介绍</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><h2 id="broker"><a href="#broker" class="headerlink" title="broker"></a>broker</h2><p>处理节点，一个kafka节点认为是一个broker,一个或者多个broker可以组成一个kafka集群。</p>
+<h2 id="topic"><a href="#topic" class="headerlink" title="topic"></a>topic</h2><p>消息主题，每一个发送到kafka的消息需要指定一个topic。消费的时候也需要指定消费的topic。</p>
+<h2 id="consumer"><a href="#consumer" class="headerlink" title="consumer"></a>consumer</h2><p>即消费者，从kafka集群消费消息。</p>
+<h2 id="producer"><a href="#producer" class="headerlink" title="producer"></a>producer</h2><p>即生产者，负责向kafka发送消息。</p>
+<h2 id="consumer-group"><a href="#consumer-group" class="headerlink" title="consumer group"></a>consumer group</h2><p>一组consumer的集合，每一个consumer属于一个consumer group.消息只会被一个consumer group中的一个consumer消费。不同consumer group 可以消费同一个消息。</p>
+<h2 id="partition"><a href="#partition" class="headerlink" title="partition"></a>partition</h2><p>物理概念，topic可以分为多个partition进行存储。</p>
+<h1 id="消费模型"><a href="#消费模型" class="headerlink" title="消费模型"></a>消费模型</h1><h2 id="队列模型"><a href="#队列模型" class="headerlink" title="队列模型"></a>队列模型</h2><p>每个消息只会被消费一次。</p>
+<h2 id="广播模型"><a href="#广播模型" class="headerlink" title="广播模型"></a>广播模型</h2><p>每个消息会被消费多次。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/消息系统/">消息系统</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-快速排序" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/07/16/快速排序/" class="article-date">
+      <time datetime="2019-07-16T05:44:00.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/16/快速排序/">快速排序</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><h2 id="php简单版本"><a href="#php简单版本" class="headerlink" title="php简单版本"></a>php简单版本</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span><span class="params">($arr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $len = count($arr);</span><br><span class="line">    <span class="keyword">if</span> ($len &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> $arr;</span><br><span class="line">    &#125;</span><br><span class="line">    $v = $arr[<span class="number">0</span>];</span><br><span class="line">    $low = $up = [];</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt; $len; ++$i) &#123;</span><br><span class="line">        <span class="keyword">if</span> ($arr[$i] &gt; $v) &#123;</span><br><span class="line">            $up[] = $arr[$i];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $low[] = $arr[$i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $low = quickSort($low);</span><br><span class="line">    $up = quickSort($up);</span><br><span class="line">    <span class="keyword">return</span> array_merge($low, [$v], $up);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(quickSort([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]));</span><br></pre></td></tr></table></figure>
+
+<h2 id="PHP复杂版"><a href="#PHP复杂版" class="headerlink" title="PHP复杂版"></a>PHP复杂版</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quick</span><span class="params">(&amp;$arr)</span> </span>&#123;</span><br><span class="line">    quick_sort($arr,<span class="number">0</span>, count($arr)<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> $arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quick_sort</span><span class="params">(&amp;$arr, $start, $end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($start == $end) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $index = $start;</span><br><span class="line">    <span class="keyword">for</span>($i=$start+<span class="number">1</span>;$i&lt;=$end;$i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>($arr[$start] &gt; $arr[$i]) &#123;</span><br><span class="line">            swap($arr,$i,$index+<span class="number">1</span>);</span><br><span class="line">            $index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    swap($arr,$start,$index);</span><br><span class="line">    quick_sort($arr, $start, $index);</span><br><span class="line">    quick_sort($arr, $index+<span class="number">1</span>, $end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span><span class="params">(&amp;$arr,$i,$j)</span> </span>&#123;</span><br><span class="line">    $tmp = $arr[$i];</span><br><span class="line">    $arr[$i] = $arr[$j];</span><br><span class="line">    $arr[$j] = $tmp;</span><br><span class="line">    <span class="keyword">unset</span>($tmp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="golang版本"><a href="#golang版本" class="headerlink" title="golang版本"></a>golang版本</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> sort</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">QuickSort</span><span class="params">(arr []<span class="keyword">int</span>, left, right <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> left &lt;= right &#123;</span><br><span class="line">		index := partion(arr, left, right)</span><br><span class="line">		QuickSort(arr,left, index<span class="number">-1</span>)</span><br><span class="line">		QuickSort(arr, index+<span class="number">1</span>, right)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">partion</span><span class="params">(arr []<span class="keyword">int</span>, left, right <span class="keyword">int</span>)</span> <span class="title">int</span></span>&#123;</span><br><span class="line">	pivot := left</span><br><span class="line">	index := left +<span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> i:=index; i &lt;= right; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> arr[i] &lt; arr[pivot] &#123;</span><br><span class="line">			arr[index], arr[i] = arr[i],arr[index]</span><br><span class="line">			index++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	arr[pivot],arr[index<span class="number">-1</span>] = arr[index<span class="number">-1</span>],arr[pivot]</span><br><span class="line">	<span class="keyword">return</span> index - <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/golang/">golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/快速排序/">快速排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-面试题-memcache和redis的区别" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -603,7 +828,7 @@
     <div class="outer">
         <div id="footer-info">
             <div class="footer-left">
-                &copy; 2019 tusimo
+                &copy; 2020 tusimo
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
