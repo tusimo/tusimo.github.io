@@ -9,9 +9,9 @@
 #！ @docs https://aurora.tridiamond.tech/guide/configuration.html
 #! ---------------------------------------------------------------
 site:
-  subtitle: Aurora's Blog
-  author: Aurora
-  nick: Auroral UI
+  subtitle: tusimo's blog
+  author: tusimo
+  nick: 王富贵
   description:
   link: '/'
   language: en
