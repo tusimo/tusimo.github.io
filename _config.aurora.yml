@@ -1,13 +1,3 @@
-#! ---------------------------------------------------------------
-#! Aurora Theme for Hexo
-#! ---------------------------------------------------------------
-#! Designed & Coded By TriDiamond
-#! ---------------------------------------------------------------
-
-#! ---------------------------------------------------------------
-#! Site Configs
-#！ @docs https://aurora.tridiamond.tech/guide/configuration.html
-#! ---------------------------------------------------------------
 site:
   subtitle: tusimo's blog
   author: tusimo
@@ -25,19 +15,14 @@ site:
     number: ''
     link: ''
 
-#! ---------------------------------------------------------------
-#! Authors Configs
-#！ @docs https://aurora.tridiamond.tech/guide/authors.html
-#! ---------------------------------------------------------------
 authors:
-  ##! example
-  # TriDiamond:
-  #   name: TriDiamond
-  #   avatar: https://up.enterdesk.com/edpic_source/44/ff/3d/44ff3d6bd2819d524facfcc33205d4cd.jpg
-  #   link: https://github.com/TriDiamond
-  #   description: 'Think like an artist, code like an artisan.'
-  #   socials:
-  #     github: https://tridiamond.tech
+  tusimo:
+    name: tusimo
+    avatar: https://avatars.githubusercontent.com/u/4344635?v=4
+    link: https://github.com/tusimo
+    description: 'Think like an artist, code like an artisan.'
+    socials:
+      github: https://tusimo.github.io
 
 #! ---------------------------------------------------------------
 #! Menu Configs
@@ -103,12 +88,12 @@ site_meta:
 gitalk:
   enable: true
   autoExpand: true
-  clientID: ''
-  clientSecret: ''
-  repo: 'dev-blog-comments'
-  owner: 'TriDiamond'
-  admin: ['TriDiamond']
-  id: uid
+  clientID: 'c0525b57e21f289ef2ea'
+  clientSecret: 'b55a86bf92249f2e93e49886bda6496b612f26c5'
+  repo: 'blog-comments'
+  owner: 'tusimo'
+  admin: ['tusimo']
+  id: location.pathname
   language: en
   distractionFreeMode: true
   recentComment: true
