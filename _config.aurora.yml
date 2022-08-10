@@ -90,7 +90,7 @@ gitalk:
   autoExpand: true
   clientID: 'c0525b57e21f289ef2ea'
   clientSecret: 'b55a86bf92249f2e93e49886bda6496b612f26c5'
-  repo: 'blog-comments'
+  repo: 'tusimo.github.io'
   owner: 'tusimo'
   admin: ['tusimo']
   id: location.pathname
