@@ -9,8 +9,9 @@ tags:
   - Envoy
 categories:
   - Kubernetes
+cover: >-
+  http://www.designerspics.com/wp-content/uploads/2014/12/paper_plane_free_photo.jpg
 date: 2022-08-10 14:24:00
-cover: http://www.designerspics.com/wp-content/uploads/2014/12/paper_plane_free_photo.jpg
 ---
 # 现象
 `Rancher` 通过 `RKE` 部署了 `K8S` 集群后,启动了 `Istio`,由于一些项目使用的事 `HTTP/1.0`协议,访问出现问题. `Istio` 默认只支持 `HTTP/1.1` 以上协议版本，并不支持 `HTTP/1.0`。

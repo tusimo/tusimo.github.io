@@ -1,7 +1,13 @@
 title: php 容器化的几点建议
 author: tusimo
-tags: []
-categories: []
+tags:
+  - php
+  - kubernetes
+  - nginx
+  - docker
+categories:
+  - kubernetes
+  - php
 cover: >-
   https://images.pexels.com/photos/1044990/pexels-photo-1044990.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 date: 2022-08-10 18:15:00
