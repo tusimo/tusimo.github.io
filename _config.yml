@@ -53,10 +53,15 @@ highlight:
   wrap: true
   hljs: false
 prismjs:
-  enable: true
+  enable: false
   preprocess: false
   line_number: true
   tab_replace: ''
+shiki:
+  enable: true
+  theme:
+  externalTheme:
+  backgroundColor: '#1a1a1a'
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
